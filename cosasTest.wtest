@@ -1,9 +1,12 @@
+import camion.*
 import cosas.*
 
-describe "group of test for cosas" {
+describe "Test paquete, batería, contendor y embalaje" {
 
-  test "first test" {
-    assert.that(true)
+  test "El contendor pesa 960 si le metemos embalaje, bumblebee y residuos de 30 kg" {
+    residuos.peso(30)
+    embalaje.cambiarLoQueEnvuelve(residuos)
+    contenedor.meterElementos([ embalaje, residuos, bumblebee ])
+    assert.equals(30+30+800+100, contenedor.peso())
   }
-
 }
