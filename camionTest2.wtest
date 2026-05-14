@@ -1,0 +1,38 @@
+import camion2.*
+import cosas2.*
+
+describe "Test camión" {
+
+  method initialize() {
+    bumblebee.cambiarForma(robot)
+    arena.peso(150)
+    bateria.cargarYDescargarMisiles() // Pone en true
+    paqueteDeLadrillos.cambiarCantidad(80)
+    embalaje.cambiarLoQueEnvuelve(paqueteDeLadrillos)
+    camion.cargarCosa(bumblebee)
+    camion.cargarCosa(arena)
+    camion.cargarCosa(bateria)
+    camion.cargarCosa(embalaje)
+
+  }
+
+  test "test peso" {
+    // Bumblebee = 800
+    // Arena = 150
+    // Bateria = 300
+    // embalaje = 160
+    assert.equals(1000 + 800 + 140 + 300 + 160, camion.peso())
+  }
+
+  test "test pesos pares" {
+    assert.that(camion.todosLosPesosSonPares())
+  }
+
+  test "la cantidad total de bultos cargados en el camion es de " {
+    // bumblee ocupa 2
+    // arena 1
+    // bateria 2
+    // embalaje 2
+    assert.equals(7, camion.cantidadTotalDeBultos())
+  }
+}
